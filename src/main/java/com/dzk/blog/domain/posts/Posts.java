@@ -1,5 +1,6 @@
 package com.dzk.blog.domain.posts;
 
+import com.dzk.blog.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 // 테이블과 연결 될 클래스임을 나타낸다. (CmUser.java -> cm_user.table)
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     /**
      * 해당 테이블의 Primary key field를 나타낸다.
      * Primany key 생성 규칙을 나타냄 (spring boot 2.0 이후 GenerationType.IDENTITY 옵션을 추가해야지 auto increment 가 된다.)
@@ -38,6 +39,11 @@ public class Posts {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
 }
